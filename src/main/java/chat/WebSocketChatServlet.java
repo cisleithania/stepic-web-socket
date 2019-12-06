@@ -14,10 +14,15 @@ public class WebSocketChatServlet extends WebSocketServlet{
         this.chatService = new ChatService();
     }
 
+    // WebSocketServletFactory производящая сокеты
     @Override
     public void configure(WebSocketServletFactory factory) {
+        // через какое время прекратить работу с пользователем, если он не производит действий
         factory.getPolicy().setIdleTimeout(LOGOUT_TIME);
+        // при установлении обращения со стороны пользователя, создается сокет ChatWebSocket
         factory.setCreator((req, resp) -> new ChatWebSocket(chatService));
     }
+
+
 
 }

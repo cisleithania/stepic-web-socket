@@ -28,6 +28,8 @@
         }
     </script>
 </head>
+<!-- тело страницы -->
+<!-- при загрузке сраницы вызывается функция init -->
 <body onload="init();">
 <div id="body">
     <div id="menu">
@@ -44,6 +46,7 @@
 
     <form name="message" action="">
         <input name="usermsg" type="text" id="message" size="40"/>
+        <!-- при нажатии кнопки Send клиентом, вызывается функция sendMessage -->
         <input type="button" name="submitmsg" value="Send..." onclick="sendMessage();"/>
     </form>
 </div>

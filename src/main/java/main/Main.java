@@ -10,9 +10,12 @@ import org.eclipse.jetty.servlet.ServletHolder;
 
 public class Main {
     public static void main(String[] args) throws Exception {
+
+        // создание jetty-сервера
         Server server = new Server(8080);
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
 
+        // закладываем в сервер сервлет WebSocketChatServlet
         context.addServlet(new ServletHolder(new WebSocketChatServlet()), "/chat");
 
         ResourceHandler resource_handler = new ResourceHandler();
@@ -24,6 +27,9 @@ public class Main {
         server.setHandler(handlers);
 
         server.start();
+
+        System.out.println("Server started");
+
         server.join();
     }
 }
